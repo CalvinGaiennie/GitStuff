@@ -39,4 +39,41 @@ git push --force-with-lease     # safe force if you rebased
 # Open PR
 
 That’s it. Do exactly this for 14 days and merge conflicts will never scare you again.
+
+php -S 127.0.0.1:8000 -t "/Users/calvingaiennie/Documents/GitHub/GitStuff"
+
+
+Goal 1: Make your local branches exactly match the remote (delete local branches that no longer exist remotely, create new ones, and reset existing ones)
+# 1. Fetch all remote information (branches, deletions, etc.)
+git fetch --all --prune
+
+# 2. (Optional but recommended) Prune deleted remote-tracking branches
+# --prune is already done above, but you can also run it separately
+git remote prune origin
+
+# 3. Delete local branches that no longer exist on remote
+git fetch --prune origin
+git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+
+# 4. Create/update local branches to track all remote branches
+for branch in $(git branch -r | grep 'origin/' | grep -v HEAD | sed 's/origin\///'); do
+  git checkout -b $branch origin/$branch 2>/dev/null || git checkout $branch
+  git reset --hard origin/$branch
+done
+
+
+How to Merge a Branch Into Main`
+# 1. Make sure you're on the latest main
+git checkout main
+git pull origin main          # or git pull if you're already set up
+
+# 2. Merge your feature branch into main
+git merge --no-ff feature/a
+
+# 3. (Optional but recommended) Check everything looks good
+git status
+git log --oneline --graph     # see the merge commit
+
+# 4. Push the updated main to the remote repository
+git push origin main
 ```
