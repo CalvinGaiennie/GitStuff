@@ -60,4 +60,20 @@ for branch in $(git branch -r | grep 'origin/' | grep -v HEAD | sed 's/origin\//
   git checkout -b $branch origin/$branch 2>/dev/null || git checkout $branch
   git reset --hard origin/$branch
 done
+
+
+How to Merge a Branch Into Main`
+# 1. Make sure you're on the latest main
+git checkout main
+git pull origin main          # or git pull if you're already set up
+
+# 2. Merge your feature branch into main
+git merge --no-ff feature/a
+
+# 3. (Optional but recommended) Check everything looks good
+git status
+git log --oneline --graph     # see the merge commit
+
+# 4. Push the updated main to the remote repository
+git push origin main
 ```
