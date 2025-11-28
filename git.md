@@ -76,4 +76,8 @@ git log --oneline --graph     # see the merge commit
 
 # 4. Push the updated main to the remote repository
 git push origin main
+
+
+DELETE LOCAL BRANCHES THAT HAVE BEEN MERGED
+git branch --merged | grep -v "\*" | grep -v "main" | grep -v "master" | grep -v "develop" | xargs git branch -d
 ```
