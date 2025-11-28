@@ -6,4 +6,9 @@ echo "Day two im adding feature b<br>";
 echo "Did I add a line break on day three?";
 echo "Day two im adding feature b";
 echo "Yes";
-
+$DevTwo = "Dev2";
+$ageTwo = 25;
+$experienceTwo = 5;
+$devYears = $experienceTwo + experience;
+echo "My name is ";
+echo "We have $devYears of development exerience on staff.";
