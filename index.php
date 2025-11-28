@@ -6,4 +6,9 @@ echo "Day two im adding feature b<br>";
 echo "Did I add a line break on day three?";
 echo "Day two im adding feature b";
 echo "Yes";
+$name = "developer";
+$age = null;
+
+echo "Hi, im $developer and I'm $age years old. <br>";
+?>
 
