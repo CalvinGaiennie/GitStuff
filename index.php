@@ -13,7 +13,12 @@ $devTwo = "Dev2";
 $ageTwo = 25;
 $experienceTwo = 5;
 $devYears = $experienceTwo + $experience;
+echo "<h2>Team</h2>";
 echo "My name is $name and I'm $age years old<br>";
 echo "We have $devYears of development exerience on staff.<br>";
 echo "Hi, im $devTwo and I'm $age years old. <br>";
+$otherStaff = ["david","kyle","tim","marcus"];
+foreach ($otherStaff as $staff) {
+    echo "<p>$staff</p>";
+}
 ?>
