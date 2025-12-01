@@ -21,4 +21,10 @@ $otherStaff = ["david","kyle","tim","marcus"];
 foreach ($otherStaff as $staff) {
     echo "<p>$staff</p>";
 }
+$salesTeam = ["alice", "bob", "charlie", "diana"];
+echo "<h3>Sales Team</h3>";
+$paragraphs = array_map(function($salesperson) {
+    return "$salesperson";
+}, $salesTeam);
+echo implode("\n", $paragraphs);
 ?>
