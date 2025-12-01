@@ -16,4 +16,10 @@ $devYears = $experienceTwo + $experience;
 echo "My name is $name and I'm $age years old<br>";
 echo "We have $devYears of development exerience on staff.<br>";
 echo "Hi, im $devTwo and I'm $age years old. <br>";
+$salesTeam = ["alice", "bob", "charlie", "diana"];
+echo "<h3>Sales Team</h3>";
+$paragraphs = array_map(function($salesperson) {
+    return "$salesperson";
+}, $salesTeam);
+echo implode("\n", $paragraphs);
 ?>
