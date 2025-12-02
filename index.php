@@ -1,11 +1,17 @@
 <?php 
-echo "I think i am phping";
-echo "wow new feature a/b";
-echo "day two im adding an echo";
+$isHiring = isset($_POST['hiring']) ? (bool)$_POST['hiring'] : true;
+
+// Minor: Add error hiding if you want clean logs (optional)
+ini_set('display_errors', 0);
+
+echo "I think i am phping<br>";  // Added <br> for readability
+echo "wow new feature a/b<br>";
+echo "day two im adding an echo<br>";
 echo "Day two im adding feature b<br>";
 echo "Did I add a line break on day three?<br>";
 echo "Day two im adding feature b<br>";
 echo "Yes<br>";
+
 $name = "developer";
 $age = 28;
 $experience = 2;
@@ -13,18 +19,35 @@ $devTwo = "Dev2";
 $ageTwo = 25;
 $experienceTwo = 5;
 $devYears = $experienceTwo + $experience;
+
 echo "<h2>Team</h2>";
 echo "My name is $name and I'm $age years old<br>";
-echo "We have $devYears of development exerience on staff.<br>";
-echo "Hi, im $devTwo and I'm $age years old. <br>";
+echo "We have $devYears years of development experience on staff.<br>";  // Fixed typo
+echo "Hi, im $devTwo and I'm $ageTwo years old.<br>";  // Fixed age
+
 $otherStaff = ["david","kyle","tim","marcus"];
 foreach ($otherStaff as $staff) {
     echo "<p>$staff</p>";
 }
+
 $salesTeam = ["alice", "bob", "charlie", "diana"];
 echo "<h3>Sales Team</h3>";
-$paragraphs = array_map(function($salesperson) {
-    return "$salesperson";
-}, $salesTeam);
-echo implode("\n", $paragraphs);
+// Simplified to foreach for consistency (optional)
+foreach ($salesTeam as $salesperson) {
+    echo "<p>$salesperson</p>";
+}
+
+//Button & Conditional Messages Practice
+echo "<h3>Hiring Status</h3>";
+echo "<form method='post'>";
+echo "<button type='submit' name='hiring' value='" . ($isHiring ? '0' : '1') . "' style='padding: 10px; background: " . ($isHiring ? '#ffcccc' : '#ccffcc') . ";'>";  // FIXED: Use 0/1 for values
+echo $isHiring ? 'Stop Hiring' : 'Start Hiring';
+echo "</button>";
+echo "</form>";
+
+if ($isHiring) {
+    echo "<p style='color: green; font-weight: bold;'>✅ We are hiring!</p>";
+} else {
+    echo "<p style='color: red; font-weight: bold;'>❌ Team is full!</p>";
+}
 ?>
