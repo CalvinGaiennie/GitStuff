@@ -36,6 +36,10 @@ echo "<h3>Sales Team</h3>";
 foreach ($salesTeam as $salesperson) {
     echo "<p>$salesperson</p>";
 }
+$paragraphs = array_map(function($salesperson) {
+    return "$salesperson";
+}, $salesTeam);
+echo implode("\n", $paragraphs);
 
 //Button & Conditional Messages Practice
 echo "<h3>Hiring Status</h3>";
@@ -50,4 +54,9 @@ if ($isHiring) {
 } else {
     echo "<p style='color: red; font-weight: bold;'>❌ Team is full!</p>";
 }
+//simple button
+
+//minimal button
+$b=isset($_POST['b'])?(bool)$_POST['b']:1;
+echo "<h3>Hiring</h3><form method=post><button type=submit name=b value=".($b?'0':'1').">".($b?'Stop':'Start')."</button></form><p style='color:".($b?'green':'red').";'>".($b?'Hiring!':'Full!')."</p>";
 ?>
