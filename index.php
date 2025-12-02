@@ -27,4 +27,8 @@ $paragraphs = array_map(function($salesperson) {
     return "$salesperson";
 }, $salesTeam);
 echo implode("\n", $paragraphs);
+
+//minimal button
+$b=isset($_POST['b'])?(bool)$_POST['b']:1;
+echo "<h3>Hiring</h3><form method=post><button type=submit name=b value=".($b?'0':'1').">".($b?'Stop':'Start')."</button></form><p style='color:".($b?'green':'red').";'>".($b?'Hiring!':'Full!')."</p>";
 ?>
