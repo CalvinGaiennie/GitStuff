@@ -82,7 +82,6 @@ if ($message !== "") {
     You typed: <strong>' . $message . '</strong>
     </p>';
 }
-?>
 
 //Select
 $choice = $_POST['role'] ?? 'developer';
