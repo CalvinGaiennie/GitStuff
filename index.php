@@ -84,3 +84,27 @@ if ($message !== "") {
 }
 ?>
 
+//Select
+$choice = $_POST['role'] ?? 'developer';
+?>
+
+<hr>
+<h3>Choose your role</h3>
+
+<form method="post">
+  <select name="role"
+          onchange="this.form.submit()"
+          style=" padding:10px; font-size:18px; width:100%;">
+    <option value="developer" <?= $choice==='developer' ? 'selected' : '' ?>>Developer</option>
+    <option value="designer" <?= $choice==='designer' ? 'selected' : '' ?>>Designer</option>
+    <option value="sales" <?= $choice==='sales' ? 'selected' : '' ?>>Sales</option>
+    <option value="manager" <?= $choice==='manager' ? 'selected' : '' ?>>Manager</option>
+    <option value="intern" <?= $choice==='intern' ? 'selected' : '' ?>>Intern</option>
+</select>
+</form>
+
+<?php if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['role'])): ?>
+<p style="margin-top:10px; padding:12px; background:#e6f3ff; font-weight:bold;">
+You selected: <span style="color:#0073aa;"><?=htmlspecialchars($choice) ?></span>
+</p>
+<?php endif; ?>
