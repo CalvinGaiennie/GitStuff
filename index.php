@@ -59,4 +59,28 @@ if ($isHiring) {
 //minimal button
 $b=isset($_POST['b'])?(bool)$_POST['b']:1;
 echo "<h3>Hiring</h3><form method=post><button type=submit name=b value=".($b?'0':'1').">".($b?'Stop':'Start')."</button></form><p style='color:".($b?'green':'red').";'>".($b?'Hiring!':'Full!')."</p>";
+
+//////
+//input
+$message = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['msg'])) {
+    $message = htmlspecialchars($_POST['msg']);
+}
+
+echo "<hr><h3>Leave a message</h3>";
+
+echo '<form method="post">';
+echo ' <input type="text"
+              name="msg"
+              placeholder="Type something and hit Enter"
+              value="' . $message . '"
+              style="width:100%; padding:10px; font-size:16px;">';
+echo '</form>';
+
+if ($message !== "") {
+    echo '<p style="margin-top:10px; background: #f0f0f0; border-left:4px solid #007cba;">
+    You typed: <strong>' . $message . '</strong>
+    </p>';
+}
 ?>
+
